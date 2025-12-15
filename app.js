@@ -3,12 +3,12 @@
 // =====================
 
 // Modelo guardia (LayersModel)
-const GUARD_MODEL_URL = "model_guard3_js/model.json";
+const GUARD_MODEL_URL = "model_guard_js/model.json";
 // [NO_LEAF, OTHER_CROPS, POTATO_LEAF]
 const GUARD_LABELS = ["NO_LEAF", "OTHER_CROPS", "POTATO_LEAF"];
 
 // Modelo enfermedad CNN exportado desde Colab (GraphModel)
-const DISEASE_MODEL_URL = "model_resnet9Final10_js/model.json";
+const DISEASE_MODEL_URL = "model_cnn_guard_js/model.json";
 // Ajusta el orden al de class_names en tu entrenamiento
 const CLASS_NAMES = ["Hoja sana", "Tizón tardío"];
 
@@ -245,4 +245,5 @@ function showDiseaseResult({ index, label, prob }) {
   resultLabel.textContent = label;
   probText.textContent = `Confianza aproximada: ${(prob * 100).toFixed(2)} %`;
 }
+
 
