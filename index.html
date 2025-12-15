@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Clasificador de Hoja de Papa</title>
+
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4.12.0/dist/tf.min.js"></script>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>🌿 Clasificador de Hoja de Papa</h1>
+    <p class="subtitle">
+      Sube una foto de una hoja de papa y el modelo te dirá si está
+      <strong>sana</strong> o tiene <strong>tizón tardío</strong>.
+    </p>
+
+    <div class="upload-section">
+      <label for="imageUpload" class="upload-label">📁 Seleccionar imagen</label>
+      <input type="file" id="imageUpload" accept="image/*" />
+      <span id="fileName" class="file-name">Ningún archivo seleccionado</span>
+    </div>
+
+    <div class="preview-section">
+      <img id="preview" src="" alt="Vista previa de la hoja" />
+    </div>
+
+    <button id="predictBtn" disabled>🔍 Clasificar hoja</button>
+
+    <div id="status" class="status">Cargando modelos...</div>
+
+    <div id="resultBox" class="result-box hidden">
+      <h2 id="resultLabel"></h2>
+      <p id="probText"></p>
+    </div>
+
+    <div id="diagnostic" class="diagnostic"></div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
