@@ -13,7 +13,7 @@ const DISEASE_MODEL_URL = "model_cnn_potato_js/model.json";
 const CLASS_NAMES = ["Hoja sana", "Tizón tardío"];
 
 // Umbral mínimo para aceptar que realmente es hoja de papa
-const THRESH_POTATO = 0.51;
+const THRESH_POTATO = 0.6;
 
 // Tamaño de entrada de tu CNN
 const CNN_SIZE = 256;
@@ -245,3 +245,4 @@ function showDiseaseResult({ index, label, prob }) {
   resultLabel.textContent = label;
   probText.textContent = `Confianza aproximada: ${(prob * 100).toFixed(2)} %`;
 }
+
