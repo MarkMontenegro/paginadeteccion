@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Detector CNN/ResNet9 + Guard - Hoja de Papa</title>
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4.12.0/dist/tf.min.js"></script>
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <div class="container">
+    <h1>🌿 Detector – Hoja de Papa 🌿</h1>
+    <h1></h1>
+
+    <div class="controls">
+      <label class="upload-label" for="imageUpload">📁 Seleccionar imagen</label>
+      <input type="file" id="imageUpload" accept="image/*">
+      <div id="fileName" class="filename">Ningún archivo seleccionado</div>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <div class="card-title">📷 Original</div>
+        <img id="imgOriginal" alt="Imagen original">
+      </div>
+
+      <div class="card">
+        <div class="card-title">⚙️ Procesada</div>
+        <img id="imgProcessed" alt="Imagen procesada">
+      </div>
+    </div>
+
+    <button id="predictBtn" class="btn" disabled>🔎 Detectar</button>
+
+    <div id="status" class="status">Cargando modelos...</div>
+
+    <div id="resultBox" class="result">
+      <div class="result-head">
+        <div>
+          <div class="muted">Predicción</div>
+          <div id="predLabel" style="font-size:1.2rem; font-weight:900;"></div>
+        </div>
+        <div id="predBadge" class="badge ok">—</div>
+      </div>
+
+      <div class="bar"><div id="confBar"></div></div>
+      <div class="muted" id="predConf"></div>
+
+      <div style="margin-top:12px; font-weight:900;">Probabilidades (enfermedad)</div>
+      <div class="probs" id="probList"></div>
+
+      <div class="footer-note" id="diagText"></div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
