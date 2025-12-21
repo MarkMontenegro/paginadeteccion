@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>🛡️ Guardia + 🧪 Detector (CNN) - Prueba Local</title>
+
+  <!-- TensorFlow.js -->
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4.12.0/dist/tf.min.js"></script>
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <div class="container">
+    <header class="header">
+      <h1>🌿 DETECTOR DE TIZON TARDIO EN HOJAS DE PAPAS 🌿</h1>
+      <p class="subtitle">
+        1) El <b>Guardia</b> valida si es hoja de papa. <br/>
+        2) Si pasa, el modelo de enfermedad clasifica: <b>Hoja sana</b> o <b>Tizón tardío</b>.<br/>
+        3) Ingresar una imagen con buena <b>Calidad</b> y <b>Iluminacion</b>. 
+      </p>
+    </header>
+
+    <section class="card">
+      <div class="row">
+        <div class="col">
+          <label class="btn" for="imageUpload">📁 Seleccionar imagen</label>
+          <input id="imageUpload" type="file" accept="image/*" />
+          <p id="fileName" class="muted">Ningún archivo seleccionado</p>
+
+          <div class="controls">
+            <button id="btnRun" class="btn primary" disabled>▶️ Ejecutar</button>
+            <button id="btnClear" class="btn ghost" disabled>🧹 Limpiar</button>
+          </div>
+
+          <div class="settings">
+            <div class="setting">
+              <label for="threshPotato">Umbral Guardia (POTATO_LEAF)</label>
+              <div class="rangeWrap">
+                <input id="threshPotato" type="range" min="0.30" max="0.95" step="0.01" value="0.70" />
+                <span id="threshValue" class="chip">0.70</span>
+              </div>
+              <p class="hint">Sube el umbral si quieres que el guardia sea más estricto (menos hojas falsas pasan).</p>
+            </div>
+          </div>
+
+          <div id="status" class="status">⏳ Cargando modelos…</div>
+        </div>
+
+        <div class="col">
+          <div class="previewWrap">
+            <img id="preview" alt="Vista previa" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Resultados</h2>
+
+      <div class="grid2">
+        <div class="resultBox">
+          <h3>🛡️ Guardia</h3>
+          <p class="muted">Salida: probabilidad de <b>POTATO_LEAF</b> (sigmoid)</p>
+          <div class="big" id="guardResult">—</div>
+          <div class="barWrap">
+            <div class="bar" id="guardBar"></div>
+          </div>
+          <div class="kv">
+            <span>Probabilidad POTATO_LEAF:</span>
+            <span class="chip" id="guardProb">—</span>
+          </div>
+        </div>
+
+        <div class="resultBox">
+          <h3>🧪 Enfermedad</h3>
+          <p class="muted">Solo se ejecuta si el guardia aprueba</p>
+          <div class="big" id="diseaseResult">—</div>
+          <div class="kv">
+            <span>Confianza:</span>
+            <span class="chip" id="diseaseProb">—</span>
+          </div>
+          <div class="note" id="diseaseNote">—</div>
+        </div>
+      </div>
+
+      <div class="logWrap">
+        <h3>🧾 Movimientos</h3>
+        <pre id="log"></pre>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <p class="muted">
+        Detecta enfermedad de papa <b>tizon tardio</b> o <b>hoja sana de papa</b>
+            </p>
+    </footer>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
